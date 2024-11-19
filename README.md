@@ -123,3 +123,25 @@ In the Lambda function we have hard-coded an Array of data but in a real world e
 6. Leave the rest unchanged, Back to the code tab and then be sure you hit the &quot;Deploy&quot; button in the code editor screen
 
 ![Create your Lex bot](images/picture_11.png)
+
+# Step 3: Link the bot with the Lambda function
+
+In this step we will link the intents we created to the Lambda function. We do this by providing the Lambda function as the method that contains the business logic used to &#39;fulfill&#39; the users requests. Once this is done (and the bot rebuilt), when a user specifies an intent (such as &#39;what is my checking account balance&#39;), Lex will call our Lambda function and pass it the intent name (&#39;GetAccountDetail&#39;) and the slot value (&#39;checking&#39;).
+
+To do this, we go back to the [Lex Console](https://console.aws.amazon.com/lex).
+
+1. Click on Personal Banker
+2. In the side bar choose Development → Aliases
+3. Click on TestBotAlias
+4. Under the Language section. Select the language that you choose before
+5. Source going to be myPersonalBanker and &quot;$LATEST&quot; as Lambda function version or alias
+
+![Set Lex latest version](images/picture_12.png)
+
+6. Now go back to GetBalanceCheckIntent. Scroll down to &quot;Fulfillment&quot;, click &quot;Advanced options&quot;
+7. in Fulfillment Lambda code hook section. check &quot;Use a Lambda function for fulfillment&quot;. It indicates you are giving Lex the permission to run this Lambda function.
+
+![Add Lambda permission](images/picture_13.png)
+
+8. Click  &quot;Update options&quot; and be sure to &quot;Save intent&quot
+9. Click &quot;Build&quot; and then click &quot;Build&quot; again on the confirmation screen.

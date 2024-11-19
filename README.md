@@ -1,4 +1,4 @@
-**Last Updated:** April 2019
+**Last Updated:** Nov 2024
 
 # Building Chatbots with Amazon Lex
 
@@ -12,7 +12,6 @@ Amazon Lex is a service that enables developers to build conversational interfac
 - Using AWS Lambda as the back-end logic for Lex
 
 # Step 1: Create the bot
-
 
 1. Log in to the [AWS console](https://console.aws.amazon.com/lex/home) and navigate to the Amazon Lex service
 - **Please ensure you have selected North Virginia as the region in the top right (Amazon Connect is not available in all regions yet)**
@@ -101,3 +100,26 @@ The build process takes approximately a minute. Once complete, you can ask your 
 15. Rebuild the bot and test result should be like this
 
 ![TestBot](images/picture_10.png).
+
+# Step 2: Fulfilling the bot
+
+We are now in a position that we can transfer the answers to the 'slots' over to a function to perform logic and get a result for the user.
+
+Here we will create a Lambda function that has some Javascript code to detect the intent name (&#39;GetBalanceCheck&#39; and return values based on the AccountType and if the Pin number was entered correctly.
+
+In the Lambda function we have hard-coded an Array of data but in a real world example we would have authenticated the user and would use a database lookup for the account balances.
+
+1. Use the AWS Console to navigate to Lambda.
+2. Click on the orange &#39;Create function&#39; link under the &#39;Getting Started&#39; section
+- Click the &quot;Author from scratch&quot; button
+- Let&#39;s give our function the name of &quot;myPersonalBanker&quot; and optionally provide a description
+- Choose Node.js 20.x as the Runtime
+- We will &quot;Create new role from AWS policy template – give it a Lex-style role name (such as &quot;LexRole&quot;) and select &quot;Test Harness permissions&quot; as the policy template.
+- Hit &quot;Create function&quot; on the bottom right and you&#39;ll be take to the Function detail page.  
+
+3. We are not adding any additional triggers, nor are we using Lambda Layers, so scroll down to the &quot; Code&quot; section
+4. Open the lambda function code you will find [here](./personalBanker.mjs) (personalBanker.mjs). Copy and paste the code into the inline editor – make sure that you overwrite any template code that is already in the code box
+5. Move to the &#39;&quot;Configuration tab&quot; in the Execution role section and ensure that the role you created previously is selected – if not then please select it
+6. Leave the rest unchanged, Back to the code tab and then be sure you hit the &quot;Deploy&quot; button in the code editor screen
+
+![Create your Lex bot](images/picture_11.png)

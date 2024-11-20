@@ -94,7 +94,7 @@ The build process takes approximately a minute. Once complete, you can ask your 
 - Click button &quot;More prompt options&quot; under Slot prompt section. 
 - Under slot prompts click &quot;Add&quot; button form top right and select Add card group
 - Provide button info like below and click &quot;Update prompts&quot;
-
+<a name="testingthebot"></a>
 ![TestBot](images/picture_09.png).
 
 15. Rebuild the bot and test result should be like this
@@ -144,4 +144,21 @@ To do this, we go back to the [Lex Console](https://console.aws.amazon.com/lex).
 ![Add Lambda permission](images/picture_13.png)
 
 8. Click  &quot;Update options&quot; and be sure to &quot;Save intent&quot
-9. Click &quot;Build&quot; and then click &quot;Build&quot; again on the confirmation screen.
+9. Click &quot;Build&quot; again on the confirmation screen.
+
+# Step 4: Running and debugging the bot
+
+1. If you now test the bot as you did at the bottom of [Step 1](#testingthebot) you will see a sample response back from the lambda function. This function has been setup to show you how a very basic flow can be configured and over the next few steps we will modify the code to make the function more helpful.
+
+2. First off all try by choosing 'Saving' and saying the 'PinNumber' is 1234. You should now get a nice response from lex telling you of your account balance. 
+
+![Add Lambda permission](images/picture_14.png)
+
+3. Finally we are going to test some error handling and a feedback loop to the user until a correct PinNumber is entered. The code will check to see if there is an account match and if not will request the user tries again and resets the 'Slot'.
+
+![Add Lambda permission](images/picture_15.png)
+# Conclusion
+
+In this lab you have learned the basic operations to manage a Lex bot. First, you created a bot, then you defined intents and slot types. Finally you defined a Lambda function and attached it to your chatbot.
+
+**NOTE We will be continuing on from this Lab in the second Lab so please do not delete the Lex Bot you have created in this exercise.**

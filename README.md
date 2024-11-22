@@ -161,4 +161,4 @@ To do this, we go back to the [Lex Console](https://console.aws.amazon.com/lex).
 
 In this lab you have learned the basic operations to manage a Lex bot. First, you created a bot, then you defined intents and slot types. Finally you defined a Lambda function and attached it to your chatbot.
 
-**NOTE We will be continuing on from this Lab in the second Lab so please do not delete the Lex Bot you have created in this exercise.**
+**NOTE We will be continuing on from this Lab in [The Second Lab](https://github.com/quanganh125/chatbox_with_aws_lex/blob/master/callCenters/README.md) so please do not delete the Lex Bot you have created in this exercise.**
